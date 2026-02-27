@@ -1,7 +1,7 @@
 const SLIDES = [
     { path: "Assets/Images/2.mp4", type: "video" },
-    { path: "Assets/Images/Calma_insta.mp4", type: "video" },
-    { path: "Assets/Images/nuova_sfera.mp4", type: "video" },
+    { path: "Assets/Images/2.mp4", type: "video" },
+    { path: "Assets/Images/2.mp4", type: "video" },
     { path: "Assets/Images/2.mp4", type: "video" },
     { path: "Assets/Images/2.mp4", type: "video" },
     { path: "Assets/Images/2.mp4", type: "video" }

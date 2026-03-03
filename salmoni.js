@@ -2,7 +2,7 @@
 const SLIDES = [
     { path: "Assets/Images/salmoni/1.mp4", type: "video" },
     { path: "Assets/Images/salmoni/2.mp4", type: "video" },
-    { path: "Assets/Images/salmoni/3.mp4", type: "video" },
+    { path: "Assets/Images/salmoni/provamarti.mp4", type: "video" },
     { path: "Assets/Images/salmoni/4.mp4", type: "video" },
     { path: "Assets/Images/salmoni/5.mp4", type: "video" }
 ];

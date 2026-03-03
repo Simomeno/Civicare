@@ -1,0 +1,69 @@
+/* Reset e impostazioni base */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    -webkit-tap-highlight-color: transparent; 
+} 
+
+body { 
+    background: #000; 
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+#story-container {
+    position: relative;
+    width: 100%;
+    max-width: 430px;
+    height: 100%;
+    max-height: 932px;
+    overflow: hidden;
+    background: #000;
+}
+
+/* Barre di progresso in alto */
+#progress-container {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    z-index: 10;
+    display: flex;
+    gap: 4px;
+    padding: 12px;
+}
+
+.progress-track {
+    flex: 1;
+    height: 2px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: #fff;
+}
+
+/* Video a tutto schermo */
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+}
+
+/* Layer invisibile per i tap */
+#interaction-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+    cursor: pointer;
+    touch-action: none;
+}

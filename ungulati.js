@@ -4,7 +4,12 @@ const SLIDES = [
     { path: "Assets/Images/ungulati/2.mp4", type: "video" },
     { path: "Assets/Images/ungulati/3.mp4", type: "video" },
     { path: "Assets/Images/ungulati/4.mp4", type: "video" },
-    { path: "Assets/Images/ungulati/5.mp4", type: "video" }
+    { path: "Assets/Images/ungulati/5.mp4", type: "video" },
+    { path: "Assets/Images/ungulati/6.mp4", type: "video" },
+    { path: "Assets/Images/ungulati/7.mp4", type: "video" },
+    { path: "Assets/Images/ungulati/8.mp4", type: "video" },
+    { path: "Assets/Images/ungulati/9.mp4", type: "video" },
+    { path: "Assets/Images/ungulati/10.mp4", type: "video" }
 ];
 
 // ---- GESTIONE DEL PLAYER E DELLE STORIE ---- //

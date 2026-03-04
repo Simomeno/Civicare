@@ -4,7 +4,12 @@ const SLIDES = [
     { path: "Assets/Images/lipidi/2.mp4", type: "video" },
     { path: "Assets/Images/lipidi/3.mp4", type: "video" },
     { path: "Assets/Images/lipidi/4.mp4", type: "video" },
-    { path: "Assets/Images/lipidi/5.mp4", type: "video" }
+    { path: "Assets/Images/lipidi/5.mp4", type: "video" },
+    { path: "Assets/Images/lipidi/6.mp4", type: "video" },
+    { path: "Assets/Images/lipidi/7.mp4", type: "video" },
+    { path: "Assets/Images/lipidi/8.mp4", type: "video" },
+    { path: "Assets/Images/lipidi/9.mp4", type: "video" },
+    { path: "Assets/Images/lipidi/10.mp4", type: "video" }
 ];
 
 // ---- GESTIONE DEL PLAYER E DELLE STORIE ---- //

@@ -4,7 +4,12 @@ const SLIDES = [
     { path: "Assets/Images/samalocole/2.mp4", type: "video" },
     { path: "Assets/Images/samalocole/3.mp4", type: "video" },
     { path: "Assets/Images/samalocole/4.mp4", type: "video" },
-    { path: "Assets/Images/samalocole/5.mp4", type: "video" }
+    { path: "Assets/Images/samalocole/5.mp4", type: "video" },
+    { path: "Assets/Images/samalocole/6.mp4", type: "video" },
+    { path: "Assets/Images/samalocole/7.mp4", type: "video" },
+    { path: "Assets/Images/samalocole/8.mp4", type: "video" },
+    { path: "Assets/Images/samalocole/9.mp4", type: "video" },
+    { path: "Assets/Images/samalocole/10.mp4", type: "video" }
 ];
 
 // ---- GESTIONE DEL PLAYER E DELLE STORIE ---- //

@@ -4,7 +4,12 @@ const SLIDES = [
     { path: "Assets/Images/50's pipe/2.mp4", type: "video" },
     { path: "Assets/Images/50's pipe/3.mp4", type: "video" },
     { path: "Assets/Images/50's pipe/4.mp4", type: "video" },
-    { path: "Assets/Images/50's pipe/5.mp4", type: "video" }
+    { path: "Assets/Images/50's pipe/5.mp4", type: "video" },
+    { path: "Assets/Images/50's pipe/6.mp4", type: "video" },
+    { path: "Assets/Images/50's pipe/7.mp4", type: "video" },
+    { path: "Assets/Images/50's pipe/8.mp4", type: "video" },
+    { path: "Assets/Images/50's pipe/9.mp4", type: "video" },
+    { path: "Assets/Images/50's pipe/10.mp4", type: "video" }
 ];
 
 // ---- GESTIONE DEL PLAYER E DELLE STORIE ---- //

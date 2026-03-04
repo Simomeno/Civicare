@@ -4,7 +4,12 @@ const SLIDES = [
     { path: "Assets/Images/salmoni/2.mp4", type: "video" },
     { path: "Assets/Images/salmoni/3.mp4", type: "video" },
     { path: "Assets/Images/salmoni/4.mp4", type: "video" },
-    { path: "Assets/Images/salmoni/5.mp4", type: "video" }
+    { path: "Assets/Images/salmoni/5.mp4", type: "video" },
+    { path: "Assets/Images/salmoni/6.mp4", type: "video" },
+    { path: "Assets/Images/salmoni/7.mp4", type: "video" },
+    { path: "Assets/Images/salmoni/8.mp4", type: "video" },
+    { path: "Assets/Images/salmoni/9.mp4", type: "video" },
+    { path: "Assets/Images/salmoni/10.mp4", type: "video" }
 ];
 
 // ---- GESTIONE DEL PLAYER E DELLE STORIE ---- //

@@ -41,7 +41,7 @@ body {
 .progress-track {
     flex: 1;
     height: 2px;
-    background: rgba(255,255,255,0.3);
+    background: #3F3F3F;
     border-radius: 2px;
     overflow: hidden;
 }

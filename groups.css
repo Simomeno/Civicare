@@ -18,19 +18,21 @@ body {
 
 #story-container {
     position: absolute;
-    top:0px;
+    top: 0;
     width: 100%;
     max-width: 430px;
     height: 100%;
     max-height: 932px;
     overflow: hidden;
-    background: #FFFBF5;
+    background: #000;
 }
 
 /* Barre di progresso in alto */
 #progress-container {
     position: absolute;
-    top: 0; left: 0; right: 0;
+    top: 0; 
+    left: 0; 
+    right: 0;
     z-index: 10;
     display: flex;
     gap: 4px;
@@ -41,7 +43,7 @@ body {
 .progress-track {
     flex: 1;
     height: 2px;
-    background: #3F3F3F;
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 2px;
     overflow: hidden;
 }
@@ -49,21 +51,32 @@ body {
 .progress-bar {
     height: 100%;
     width: 0%;
-    background: #A8A8A8;
+    background: #fff;
+    /* Opzionale: aggiunge un pelo di fluidità visiva all'avanzamento della barra */
+    transition: width 0.1s linear; 
 }
 
-/* Video a tutto schermo */
-video {
-    top:0px;
+/* --- GESTIONE DEL DOPPIO PLAYER --- */
+.story-video {
     position: absolute;
+    top: 0;
     width: 100%;
-    height: auto;
+    height: 100%; /* Copre tutta l'area disponibile */
     object-fit: contain;
-    position: absolute;
     inset: 0;
+    opacity: 0; /* Di default il video è invisibile */
+    z-index: 1; /* Sta sotto */
+    /* Una transizione leggerissima evita stacchi netti al cambio video */
+    transition: opacity 0.1s ease; 
 }
 
-/* Layer invisibile per i tap */
+/* Quando il video riceve la classe .active via JS, diventa visibile */
+.story-video.active {
+    opacity: 1;
+    z-index: 2; /* Viene portato in primo piano */
+}
+
+/* Layer invisibile per i tap (Avanti, Indietro, Pausa) */
 #interaction-layer {
     position: absolute;
     inset: 0;

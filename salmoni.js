@@ -17,8 +17,12 @@ const SLIDES = [
 let currentIdx = 0;
 let isPaused = false;
 let rafId = null;
+let isTransitioning = false; // Evita glitch se si tocca troppo velocemente
 
-const videoEl = document.getElementById('main-video');
+// Setup dei due video
+let activeVideo = document.getElementById('video-1');
+let hiddenVideo = document.getElementById('video-2');
+
 const progressContainer = document.getElementById('progress-container');
 const interactionLayer = document.getElementById('interaction-layer');
 
@@ -35,23 +39,49 @@ SLIDES.forEach(() => {
 const bars = document.querySelectorAll('.progress-bar');
 
 function loadSlide(idx) {
+    if (isTransitioning) return;
+    isTransitioning = true;
     currentIdx = idx;
-    const s = SLIDES[currentIdx];
-    
-    videoEl.src = s.path;
-    videoEl.load();
     
     // Aggiorna lo stato visivo delle barre
     bars.forEach((bar, i) => {
         bar.style.width = i < currentIdx ? "100%" : "0%";
     });
 
-    videoEl.play().catch(e => console.log("Autoplay in attesa di interazione."));
+    const s = SLIDES[currentIdx];
+    
+    // Carica la sorgente nel video NASCOSTO
+    hiddenVideo.src = s.path;
+    hiddenVideo.load();
+    
+    // Aspetta che il video nascosto sia pronto per riprodurre il primo frame
+    hiddenVideo.onloadeddata = () => {
+        hiddenVideo.play().catch(e => console.log("Autoplay in attesa di interazione.", e));
+        
+        // Scambia le classi: il nascosto diventa visibile e viceversa
+        hiddenVideo.classList.add('active');
+        activeVideo.classList.remove('active');
+        
+        // Ferma e resetta il vecchio video attivo
+        activeVideo.pause();
+        activeVideo.currentTime = 0;
+        
+        // Inverti i ruoli delle variabili
+        let temp = activeVideo;
+        activeVideo = hiddenVideo;
+        hiddenVideo = temp;
+
+        // Attacca l'evento di fine al nuovo video attivo
+        activeVideo.onended = next;
+        
+        // Transizione finita, sblocca i tap
+        isTransitioning = false;
+    };
 }
 
 function tick() {
-    if (!isPaused && videoEl.duration) {
-        const pct = (videoEl.currentTime / videoEl.duration) * 100;
+    if (!isPaused && activeVideo.duration && !isTransitioning) {
+        const pct = (activeVideo.currentTime / activeVideo.duration) * 100;
         bars[currentIdx].style.width = `${pct}%`;
     }
     rafId = requestAnimationFrame(tick);
@@ -62,7 +92,7 @@ function next() {
         loadSlide(currentIdx + 1);
     } else {
         // Alla fine dell'ultimo video, per ora si mette in pausa.
-        videoEl.pause();
+        activeVideo.pause();
     }
 }
 
@@ -70,26 +100,26 @@ function prev() {
     if (currentIdx > 0) {
         loadSlide(currentIdx - 1);
     } else {
-        videoEl.currentTime = 0;
+        activeVideo.currentTime = 0;
     }
 }
-
-videoEl.onended = next;
 
 // Gestione del tocco per pausa/avanti/indietro
 let holdTimer;
 interactionLayer.addEventListener('pointerdown', (e) => {
+    if(isTransitioning) return;
     holdTimer = setTimeout(() => {
         isPaused = true;
-        videoEl.pause();
+        activeVideo.pause();
     }, 150);
 });
 
 interactionLayer.addEventListener('pointerup', (e) => {
+    if(isTransitioning) return;
     clearTimeout(holdTimer);
     if (isPaused) {
         isPaused = false;
-        videoEl.play();
+        activeVideo.play();
     } else {
         const x = e.clientX;
         const width = window.innerWidth;
@@ -98,6 +128,10 @@ interactionLayer.addEventListener('pointerup', (e) => {
     }
 });
 
-// Partenza
-loadSlide(0);
-requestAnimationFrame(tick);
+// Partenza: carica la prima slide direttamente sul video attivo
+activeVideo.src = SLIDES[0].path;
+activeVideo.onloadeddata = () => {
+    activeVideo.play().catch(e => console.log("Autoplay in attesa di interazione."));
+    activeVideo.onended = next;
+    requestAnimationFrame(tick);
+};
